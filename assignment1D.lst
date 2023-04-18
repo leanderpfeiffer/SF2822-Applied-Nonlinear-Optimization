@@ -1,0 +1,171 @@
+GAMS 42.5.0  cf11b917 Mar 30, 2023          DEX-DEG x86 64bit/macOS - 04/18/23 16:13:35 Page 1
+Optimization of final satellite Orbit
+C o m p i l a t i o n
+
+
+   2  Parameters
+   3      N
+   4      mu
+   5      r_0
+   6      m_0
+   7      m_dot
+   8      t_f
+   9      T
+  10      c_1
+  11      c_2
+  12      c_3;
+  13   
+  14  N = 100;
+  15  mu  = 1.327 * 10^20;
+****                  $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  16  r_0 = 1.496*10^11;
+****                $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  17  m_0 = 4.53*10^3;
+****               $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  18  m_dot = 6.76 * 10^-5;
+****                   $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  19  t_f = 1.668*10^7;
+****                $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  20  T   = 3.77;
+  21  c_1 = T*r_0*r_0 / (mu*m_0);
+  22  c_2 = m_dot * mu^0.5 / (T * r_0^0.5);
+****                  $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  23  c_3 = t_f * mu^0.5 / r_0^(3/2)
+****                $409
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  24   
+  25   
+  26  Sets
+  27      n index   / 0*N /;
+****      $195      $409
+**** 195  Symbol redefined with a different type
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  28   
+  29  Variables
+  30      x1(n) dimensionless radius
+****         $121
+**** 121  Set expected
+  31      x2(n) dimensionless radial velocity
+****         $121
+**** 121  Set expected
+  32      x3(n) dimensionless tangental velocity
+****         $121
+**** 121  Set expected
+  33      u(n)  angle of thrust;
+****        $121
+**** 121  Set expected
+  34   
+  35  Equations
+  36      start_condition_x1
+  37      start_condition_x2
+  38      start_condition_x3
+  39      end_condition_x2
+  40      end_condition_x3
+  41   
+  42      transition_x1
+  43      transition_x2
+  44      transition_x3;
+  45   
+  46  start_condition_x1 .. x1(0) =e= 1;
+****                           $145,148
+**** 145  Set identifier or quoted element expected
+**** 148  Dimension different - The symbol is referenced with more/less
+****         indices as declared
+  47  start_condition_x2 .. x2(0) =e= 0;
+****                           $145,148
+**** 145  Set identifier or quoted element expected
+**** 148  Dimension different - The symbol is referenced with more/less
+****         indices as declared
+  48  start_condition_x3 .. x3(0) =e= 1;
+****                           $145,148
+**** 145  Set identifier or quoted element expected
+**** 148  Dimension different - The symbol is referenced with more/less
+****         indices as declared
+  49   
+  50  end_condition_x2 .. x2(N) =e= 0;
+****                         $121,148
+**** 121  Set expected
+**** 148  Dimension different - The symbol is referenced with more/less
+****         indices as declared
+  51  end_condition_x3 .. x1(N) * x3(N) * x3(N) =e= 1;
+****                         $121,148$121,148$121,148
+**** 121  Set expected
+**** 148  Dimension different - The symbol is referenced with more/less
+****         indices as declared
+  52   
+  53  transition_x1 .. x1(n+1) =e= x1(n) + c_3^2/N * x2(n);
+****                      $121,278,148$121,148$409
+**** 121  Set expected
+**** 148  Dimension different - The symbol is referenced with more/less
+****         indices as declared
+**** 278  Lags are not allowed on maps
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  54  transition_x2 .. x2(n+1) =e= x2(n) + x3(n)^2/(N*x_1(n)) - 1/(N*x1(n)^2) + sin(u(n))/(N/c1-c1*c2*n);
+****                      $121,278,148$121,148$121,148,409
+**** 121  Set expected
+**** 148  Dimension different - The symbol is referenced with more/less
+****         indices as declared
+**** 278  Lags are not allowed on maps
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  55  transition_x3 .. x3(n+1) =e= x3(n) + c_3^2*x2(n)*x3(n)/(N*x1(n)) + c_3*cos(u(n))/(N/c1-c1*c2*n);
+****                      $121,278,148$121,148$409
+**** 121  Set expected
+**** 148  Dimension different - The symbol is referenced with more/less
+****         indices as declared
+**** 278  Lags are not allowed on maps
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  56   
+  57  Model orbit_optimization /all/ ;
+  58   
+  59    Solve orbit_optimization using nlp maximizing x1(N) ;
+****                                                   $148,257,409
+**** 148  Dimension different - The symbol is referenced with more/less
+****         indices as declared
+**** 257  Solve statement not checked because of previous errors
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+  60   
+  61    Display x1(N)
+****             $143,141,409
+**** 141  Symbol declared but no values have been assigned. Check for missing
+****         data definition, assignment, data loading or implicit assignment
+****         via a solve statement.
+****         A wild shot: You may have spurious commas in the explanatory
+****         text of a declaration. Check symbol reference list.
+**** 143  A suffix is missing
+**** 409  Unrecognizable item - skip to find a new statement
+****        looking for a ';' or a key word to get started again
+
+**** 53 ERROR(S)   0 WARNING(S)
+
+
+COMPILATION TIME     =        0.010 SECONDS      2 MB  42.5.0 cf11b917 DEX-DEG
+
+
+USER: GAMS Demo license for Leander Pfeiffer         G230405|0002CO-GEN
+      KTH, Sweden                                              DL089359
+
+
+**** FILE SUMMARY
+
+Input      /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+Output     /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.lst
+
+**** USER ERROR(S) ENCOUNTERED
