@@ -1,0 +1,87 @@
+
+--- Job assignment1D.gms Start 04/19/23 15:37:08 42.5.0 cf11b917 DEX-DEG x86 64bit/macOS
+--- Applying:
+    /Library/Frameworks/GAMS.framework/Versions/42/Resources/gmsprmun.txt
+--- GAMS Parameters defined
+    Input /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    PageSize 0
+    ScrDir /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/225a/
+    SysDir /Library/Frameworks/GAMS.framework/Versions/42/Resources/
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: GAMS Demo license for Leander Pfeiffer         G230405|0002CO-GEN
+          KTH, Sweden                                              DL089359
+          /Users/leanderpfeiffer/Library/Application Support/GAMS/gamslice.txt
+          leanderp@kth.se, Leander Pfeiffer                                
+          Demo license for demonstration and instructional purposes only
+Processor information: 1 socket(s), 2 core(s), and 4 thread(s) available
+GAMS 42.5.0   Copyright (C) 1987-2023 GAMS Development. All rights reserved
+--- Starting compilation
+--- assignment1D.gms(52) 3 Mb 3 Errors
+*** Error 149 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Uncontrolled set entered as constant
+*** Error 149 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Uncontrolled set entered as constant
+*** Error 149 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Uncontrolled set entered as constant
+--- assignment1D.gms(53) 3 Mb 10 Errors
+*** Error 149 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Uncontrolled set entered as constant
+*** Error 149 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Uncontrolled set entered as constant
+*** Error 149 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Uncontrolled set entered as constant
+*** Error 149 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Uncontrolled set entered as constant
+*** Error 149 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Uncontrolled set entered as constant
+*** Error 149 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Uncontrolled set entered as constant
+*** Error 148 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- assignment1D.gms(54) 3 Mb 18 Errors
+*** Error 149 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Uncontrolled set entered as constant
+*** Error 149 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Uncontrolled set entered as constant
+*** Error 149 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Uncontrolled set entered as constant
+*** Error 149 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Uncontrolled set entered as constant
+*** Error 140 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Unknown symbol
+*** Error 149 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Uncontrolled set entered as constant
+*** Error 149 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Uncontrolled set entered as constant
+*** Error 148 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+--- assignment1D.gms(58) 3 Mb 21 Errors
+*** Error 148 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Dimension different - The symbol is referenced with more/less
+       indices as declared
+*** Error 257 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Solve statement not checked because of previous errors
+*** Error 409 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- assignment1D.gms(60) 3 Mb 24 Errors
+*** Error 143 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    A suffix is missing
+*** Error 141 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Symbol declared but no values have been assigned. Check for missing
+       data definition, assignment, data loading or implicit assignment
+       via a solve statement.
+       A wild shot: You may have spurious commas in the explanatory
+       text of a declaration. Check symbol reference list.
+*** Error 409 in /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/assignment1D.gms
+    Unrecognizable item - skip to find a new statement
+      looking for a ';' or a key word to get started again
+--- assignment1D.gms(60) 3 Mb 24 Errors
+*** Status: Compilation error(s)
+--- Job assignment1D.gms Stop 04/19/23 15:37:08 elapsed 0:00:00.024

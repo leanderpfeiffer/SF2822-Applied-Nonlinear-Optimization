@@ -1,4 +1,4 @@
-GAMS 42.5.0  cf11b917 Mar 30, 2023          DEX-DEG x86 64bit/macOS - 04/18/23 16:13:35 Page 1
+GAMS 42.5.0  cf11b917 Mar 30, 2023          DEX-DEG x86 64bit/macOS - 04/19/23 15:55:04 Page 1
 Optimization of final satellite Orbit
 C o m p i l a t i o n
 
@@ -16,58 +16,25 @@ C o m p i l a t i o n
   12      c_3;
   13   
   14  N = 100;
-  15  mu  = 1.327 * 10^20;
-****                  $409
-**** 409  Unrecognizable item - skip to find a new statement
-****        looking for a ';' or a key word to get started again
-  16  r_0 = 1.496*10^11;
-****                $409
-**** 409  Unrecognizable item - skip to find a new statement
-****        looking for a ';' or a key word to get started again
-  17  m_0 = 4.53*10^3;
-****               $409
-**** 409  Unrecognizable item - skip to find a new statement
-****        looking for a ';' or a key word to get started again
-  18  m_dot = 6.76 * 10^-5;
-****                   $409
-**** 409  Unrecognizable item - skip to find a new statement
-****        looking for a ';' or a key word to get started again
-  19  t_f = 1.668*10^7;
-****                $409
-**** 409  Unrecognizable item - skip to find a new statement
-****        looking for a ';' or a key word to get started again
+  15  mu  = 1.327 * 10**20;
+  16  r_0 = 1.496*10**11;
+  17  m_0 = 4.53*10**3;
+  18  m_dot = 6.76 * 10**(-5);
+  19  t_f = 1.668*10**7;
   20  T   = 3.77;
   21  c_1 = T*r_0*r_0 / (mu*m_0);
-  22  c_2 = m_dot * mu^0.5 / (T * r_0^0.5);
-****                  $409
-**** 409  Unrecognizable item - skip to find a new statement
-****        looking for a ';' or a key word to get started again
-  23  c_3 = t_f * mu^0.5 / r_0^(3/2)
-****                $409
-**** 409  Unrecognizable item - skip to find a new statement
-****        looking for a ';' or a key word to get started again
+  22  c_2 = m_dot * mu**0.5 / (T * r_0**0.5);
+  23  c_3 = t_f * mu**0.5 / r_0**(3/2);
   24   
   25   
-  26  Sets
-  27      n index   / 0*N /;
-****      $195      $409
-**** 195  Symbol redefined with a different type
-**** 409  Unrecognizable item - skip to find a new statement
-****        looking for a ';' or a key word to get started again
-  28   
-  29  Variables
-  30      x1(n) dimensionless radius
-****         $121
-**** 121  Set expected
-  31      x2(n) dimensionless radial velocity
-****         $121
-**** 121  Set expected
-  32      x3(n) dimensionless tangental velocity
-****         $121
-**** 121  Set expected
-  33      u(n)  angle of thrust;
-****        $121
-**** 121  Set expected
+  26  Set k index   / 0*100 /;
+  27   
+  28  Variables
+  29      x1(k) dimensionless radius
+  30      x2(k) dimensionless radial velocity
+  31      x3(k) dimensionless tangental velocity
+  32      u(k)  angle of thrust
+  33      z objective ;
   34   
   35  Equations
   36      start_condition_x1
@@ -76,87 +43,424 @@ C o m p i l a t i o n
   39      end_condition_x2
   40      end_condition_x3
   41   
-  42      transition_x1
-  43      transition_x2
-  44      transition_x3;
+  42      transition_x1(k)
+  43      transition_x2(k)
+  44      transition_x3(k)
   45   
-  46  start_condition_x1 .. x1(0) =e= 1;
-****                           $145,148
-**** 145  Set identifier or quoted element expected
-**** 148  Dimension different - The symbol is referenced with more/less
-****         indices as declared
-  47  start_condition_x2 .. x2(0) =e= 0;
-****                           $145,148
-**** 145  Set identifier or quoted element expected
-**** 148  Dimension different - The symbol is referenced with more/less
-****         indices as declared
-  48  start_condition_x3 .. x3(0) =e= 1;
-****                           $145,148
-**** 145  Set identifier or quoted element expected
-**** 148  Dimension different - The symbol is referenced with more/less
-****         indices as declared
-  49   
-  50  end_condition_x2 .. x2(N) =e= 0;
-****                         $121,148
-**** 121  Set expected
-**** 148  Dimension different - The symbol is referenced with more/less
-****         indices as declared
-  51  end_condition_x3 .. x1(N) * x3(N) * x3(N) =e= 1;
-****                         $121,148$121,148$121,148
-**** 121  Set expected
-**** 148  Dimension different - The symbol is referenced with more/less
-****         indices as declared
-  52   
-  53  transition_x1 .. x1(n+1) =e= x1(n) + c_3^2/N * x2(n);
-****                      $121,278,148$121,148$409
-**** 121  Set expected
-**** 148  Dimension different - The symbol is referenced with more/less
-****         indices as declared
-**** 278  Lags are not allowed on maps
-**** 409  Unrecognizable item - skip to find a new statement
-****        looking for a ';' or a key word to get started again
-  54  transition_x2 .. x2(n+1) =e= x2(n) + x3(n)^2/(N*x_1(n)) - 1/(N*x1(n)^2) + sin(u(n))/(N/c1-c1*c2*n);
-****                      $121,278,148$121,148$121,148,409
-**** 121  Set expected
-**** 148  Dimension different - The symbol is referenced with more/less
-****         indices as declared
-**** 278  Lags are not allowed on maps
-**** 409  Unrecognizable item - skip to find a new statement
-****        looking for a ';' or a key word to get started again
-  55  transition_x3 .. x3(n+1) =e= x3(n) + c_3^2*x2(n)*x3(n)/(N*x1(n)) + c_3*cos(u(n))/(N/c1-c1*c2*n);
-****                      $121,278,148$121,148$409
-**** 121  Set expected
-**** 148  Dimension different - The symbol is referenced with more/less
-****         indices as declared
-**** 278  Lags are not allowed on maps
-**** 409  Unrecognizable item - skip to find a new statement
-****        looking for a ';' or a key word to get started again
-  56   
-  57  Model orbit_optimization /all/ ;
+  46      objective;
+  47   
+  48  start_condition_x1 .. x1("0") =e= 1;
+  49  start_condition_x2 .. x2("0") =e= 0;
+  50  start_condition_x3 .. x3("0") =e= 1;
+  51   
+  52  end_condition_x2 .. x2("100") =e= 0;
+  53  end_condition_x3 .. x1("100")*x3("100")**2 =e= 1;
+  54   
+  55  transition_x1(k) .. x1(k+1) =e= x1(k) + c_3**2/N * x2(k);
+  56  transition_x2(k) .. x2(k+1) =e= x2(k) + x3(k)**2/(N*x1(k)) - 1/(N*x1(k)**2) + sin(u(k))/(N/c_1-c_1*c_2*ord(k));
+  57  transition_x3(k) .. x3(k+1) =e= x3(k) + c_3**2*x2(k)*x3(k)/(N*x1(k)) + c_3*cos(u(k))/(N/c_1-c_1*c_2*ord(k));
   58   
-  59    Solve orbit_optimization using nlp maximizing x1(N) ;
-****                                                   $148,257,409
-**** 148  Dimension different - The symbol is referenced with more/less
-****         indices as declared
-**** 257  Solve statement not checked because of previous errors
-**** 409  Unrecognizable item - skip to find a new statement
-****        looking for a ';' or a key word to get started again
+  59  objective .. z =e= x1("100");
   60   
-  61    Display x1(N)
-****             $143,141,409
-**** 141  Symbol declared but no values have been assigned. Check for missing
-****         data definition, assignment, data loading or implicit assignment
-****         via a solve statement.
-****         A wild shot: You may have spurious commas in the explanatory
-****         text of a declaration. Check symbol reference list.
-**** 143  A suffix is missing
-**** 409  Unrecognizable item - skip to find a new statement
-****        looking for a ';' or a key word to get started again
-
-**** 53 ERROR(S)   0 WARNING(S)
+  61  Model orbit_optimization /all/ ;
+  62   
+  63  Solve orbit_optimization using nlp max z ;
+  64   
 
 
-COMPILATION TIME     =        0.010 SECONDS      2 MB  42.5.0 cf11b917 DEX-DEG
+COMPILATION TIME     =        0.002 SECONDS      3 MB  42.5.0 cf11b917 DEX-DEG
+GAMS 42.5.0  cf11b917 Mar 30, 2023          DEX-DEG x86 64bit/macOS - 04/19/23 15:55:04 Page 2
+Optimization of final satellite Orbit
+Equation Listing    SOLVE orbit_optimization Using NLP From line 63
+
+
+---- start_condition_x1  =E=  
+
+start_condition_x1..  x1(0) =E= 1 ; (LHS = 0, INFES = 1 ****)
+     
+
+---- start_condition_x2  =E=  
+
+start_condition_x2..  x2(0) =E= 0 ; (LHS = 0)
+     
+
+---- start_condition_x3  =E=  
+
+start_condition_x3..  x3(0) =E= 1 ; (LHS = 0, INFES = 1 ****)
+     
+
+---- end_condition_x2  =E=  
+
+end_condition_x2..  x2(100) =E= 0 ; (LHS = 0)
+     
+
+---- end_condition_x3  =E=  
+
+end_condition_x3..  (0)*x1(100) + (0)*x3(100) =E= 1 ; (LHS = 0, INFES = 1 ****)
+     
+
+---- transition_x1  =E=  
+
+transition_x1(0)..  - x1(0) + x1(1) - 0.110272757532531*x2(0) =E= 0 ; (LHS = 0)
+     
+transition_x1(1)..  - x1(1) + x1(2) - 0.110272757532531*x2(1) =E= 0 ; (LHS = 0)
+     
+transition_x1(2)..  - x1(2) + x1(3) - 0.110272757532531*x2(2) =E= 0 ; (LHS = 0)
+     
+REMAINING 98 ENTRIES SKIPPED
+
+**** Exec Error at line 56: division by zero (0)
+**** Evaluation error(s) in equation "transition_x2(0)"
+**** Evaluation error(s) in equation "transition_x2(1)"
+**** Evaluation error(s) in equation "transition_x2(2)"
+**** Evaluation error(s) in equation "transition_x2(3)"
+**** Evaluation error(s) in equation "transition_x2(4)"
+**** Evaluation error(s) in equation "transition_x2(5)"
+**** Evaluation error(s) in equation "transition_x2(6)"
+**** Evaluation error(s) in equation "transition_x2(7)"
+**** Evaluation error(s) in equation "transition_x2(8)"
+**** Evaluation error(s) in equation "transition_x2(9)"
+**** Evaluation error(s) in equation "transition_x2(10)"
+**** Evaluation error(s) in equation "transition_x2(11)"
+**** Evaluation error(s) in equation "transition_x2(12)"
+**** Evaluation error(s) in equation "transition_x2(13)"
+**** Evaluation error(s) in equation "transition_x2(14)"
+**** Evaluation error(s) in equation "transition_x2(15)"
+**** Evaluation error(s) in equation "transition_x2(16)"
+**** Evaluation error(s) in equation "transition_x2(17)"
+**** Evaluation error(s) in equation "transition_x2(18)"
+**** Evaluation error(s) in equation "transition_x2(19)"
+**** Evaluation error(s) in equation "transition_x2(20)"
+**** Evaluation error(s) in equation "transition_x2(21)"
+**** Evaluation error(s) in equation "transition_x2(22)"
+**** Evaluation error(s) in equation "transition_x2(23)"
+**** Evaluation error(s) in equation "transition_x2(24)"
+**** Evaluation error(s) in equation "transition_x2(25)"
+**** Evaluation error(s) in equation "transition_x2(26)"
+**** Evaluation error(s) in equation "transition_x2(27)"
+**** Evaluation error(s) in equation "transition_x2(28)"
+**** Evaluation error(s) in equation "transition_x2(29)"
+**** Evaluation error(s) in equation "transition_x2(30)"
+**** Evaluation error(s) in equation "transition_x2(31)"
+**** Evaluation error(s) in equation "transition_x2(32)"
+**** Evaluation error(s) in equation "transition_x2(33)"
+**** Evaluation error(s) in equation "transition_x2(34)"
+**** Evaluation error(s) in equation "transition_x2(35)"
+**** Evaluation error(s) in equation "transition_x2(36)"
+**** Evaluation error(s) in equation "transition_x2(37)"
+**** Evaluation error(s) in equation "transition_x2(38)"
+**** Evaluation error(s) in equation "transition_x2(39)"
+**** Evaluation error(s) in equation "transition_x2(40)"
+**** Evaluation error(s) in equation "transition_x2(41)"
+**** Evaluation error(s) in equation "transition_x2(42)"
+**** Evaluation error(s) in equation "transition_x2(43)"
+**** Evaluation error(s) in equation "transition_x2(44)"
+**** Evaluation error(s) in equation "transition_x2(45)"
+**** Evaluation error(s) in equation "transition_x2(46)"
+**** Evaluation error(s) in equation "transition_x2(47)"
+**** Evaluation error(s) in equation "transition_x2(48)"
+**** Evaluation error(s) in equation "transition_x2(49)"
+**** Evaluation error(s) in equation "transition_x2(50)"
+**** Evaluation error(s) in equation "transition_x2(51)"
+**** Evaluation error(s) in equation "transition_x2(52)"
+**** Evaluation error(s) in equation "transition_x2(53)"
+**** Evaluation error(s) in equation "transition_x2(54)"
+**** Evaluation error(s) in equation "transition_x2(55)"
+**** Evaluation error(s) in equation "transition_x2(56)"
+**** Evaluation error(s) in equation "transition_x2(57)"
+**** Evaluation error(s) in equation "transition_x2(58)"
+**** Evaluation error(s) in equation "transition_x2(59)"
+**** Evaluation error(s) in equation "transition_x2(60)"
+**** Evaluation error(s) in equation "transition_x2(61)"
+**** Evaluation error(s) in equation "transition_x2(62)"
+**** Evaluation error(s) in equation "transition_x2(63)"
+**** Evaluation error(s) in equation "transition_x2(64)"
+**** Evaluation error(s) in equation "transition_x2(65)"
+**** Evaluation error(s) in equation "transition_x2(66)"
+**** Evaluation error(s) in equation "transition_x2(67)"
+**** Evaluation error(s) in equation "transition_x2(68)"
+**** Evaluation error(s) in equation "transition_x2(69)"
+**** Evaluation error(s) in equation "transition_x2(70)"
+**** Evaluation error(s) in equation "transition_x2(71)"
+**** Evaluation error(s) in equation "transition_x2(72)"
+**** Evaluation error(s) in equation "transition_x2(73)"
+**** Evaluation error(s) in equation "transition_x2(74)"
+**** Evaluation error(s) in equation "transition_x2(75)"
+**** Evaluation error(s) in equation "transition_x2(76)"
+**** Evaluation error(s) in equation "transition_x2(77)"
+**** Evaluation error(s) in equation "transition_x2(78)"
+**** Evaluation error(s) in equation "transition_x2(79)"
+**** Evaluation error(s) in equation "transition_x2(80)"
+**** Evaluation error(s) in equation "transition_x2(81)"
+**** Evaluation error(s) in equation "transition_x2(82)"
+**** Evaluation error(s) in equation "transition_x2(83)"
+**** Evaluation error(s) in equation "transition_x2(84)"
+**** Evaluation error(s) in equation "transition_x2(85)"
+**** Evaluation error(s) in equation "transition_x2(86)"
+**** Evaluation error(s) in equation "transition_x2(87)"
+**** Evaluation error(s) in equation "transition_x2(88)"
+**** Evaluation error(s) in equation "transition_x2(89)"
+**** Evaluation error(s) in equation "transition_x2(90)"
+**** Evaluation error(s) in equation "transition_x2(91)"
+**** Evaluation error(s) in equation "transition_x2(92)"
+**** Evaluation error(s) in equation "transition_x2(93)"
+**** Evaluation error(s) in equation "transition_x2(94)"
+**** Evaluation error(s) in equation "transition_x2(95)"
+**** Evaluation error(s) in equation "transition_x2(96)"
+**** Evaluation error(s) in equation "transition_x2(97)"
+**** Evaluation error(s) in equation "transition_x2(98)"
+**** Evaluation error(s) in equation "transition_x2(99)"
+**** Evaluation error(s) in equation "transition_x2(100)"
+
+---- transition_x2  =E=  
+
+transition_x2(0)..  - (100)*x1(0) - x2(0) + x2(1) + (0)*x3(0) - (0.00140372199753585)*u(0) =E= 0 ; (LHS = UNDF)
+     
+transition_x2(1)..  - (100)*x1(1) - x2(1) + x2(2) + (0)*x3(1) - (0.0014038697104045)*u(1) =E= 0 ; (LHS = UNDF)
+     
+transition_x2(2)..  - (100)*x1(2) - x2(2) + x2(3) + (0)*x3(2) - (0.0014040174543639)*u(2) =E= 0 ; (LHS = UNDF)
+     
+REMAINING 98 ENTRIES SKIPPED
+
+**** Exec Error at line 57: division by zero (0)
+**** Evaluation error(s) in equation "transition_x3(0)"
+**** Evaluation error(s) in equation "transition_x3(1)"
+**** Evaluation error(s) in equation "transition_x3(2)"
+**** Evaluation error(s) in equation "transition_x3(3)"
+**** Evaluation error(s) in equation "transition_x3(4)"
+**** Evaluation error(s) in equation "transition_x3(5)"
+**** Evaluation error(s) in equation "transition_x3(6)"
+**** Evaluation error(s) in equation "transition_x3(7)"
+**** Evaluation error(s) in equation "transition_x3(8)"
+**** Evaluation error(s) in equation "transition_x3(9)"
+**** Evaluation error(s) in equation "transition_x3(10)"
+**** Evaluation error(s) in equation "transition_x3(11)"
+**** Evaluation error(s) in equation "transition_x3(12)"
+**** Evaluation error(s) in equation "transition_x3(13)"
+**** Evaluation error(s) in equation "transition_x3(14)"
+**** Evaluation error(s) in equation "transition_x3(15)"
+**** Evaluation error(s) in equation "transition_x3(16)"
+**** Evaluation error(s) in equation "transition_x3(17)"
+**** Evaluation error(s) in equation "transition_x3(18)"
+**** Evaluation error(s) in equation "transition_x3(19)"
+**** Evaluation error(s) in equation "transition_x3(20)"
+**** Evaluation error(s) in equation "transition_x3(21)"
+**** Evaluation error(s) in equation "transition_x3(22)"
+**** Evaluation error(s) in equation "transition_x3(23)"
+**** Evaluation error(s) in equation "transition_x3(24)"
+**** Evaluation error(s) in equation "transition_x3(25)"
+**** Evaluation error(s) in equation "transition_x3(26)"
+**** Evaluation error(s) in equation "transition_x3(27)"
+**** Evaluation error(s) in equation "transition_x3(28)"
+**** Evaluation error(s) in equation "transition_x3(29)"
+**** Evaluation error(s) in equation "transition_x3(30)"
+**** Evaluation error(s) in equation "transition_x3(31)"
+**** Evaluation error(s) in equation "transition_x3(32)"
+**** Evaluation error(s) in equation "transition_x3(33)"
+**** Evaluation error(s) in equation "transition_x3(34)"
+**** Evaluation error(s) in equation "transition_x3(35)"
+**** Evaluation error(s) in equation "transition_x3(36)"
+**** Evaluation error(s) in equation "transition_x3(37)"
+**** Evaluation error(s) in equation "transition_x3(38)"
+**** Evaluation error(s) in equation "transition_x3(39)"
+**** Evaluation error(s) in equation "transition_x3(40)"
+**** Evaluation error(s) in equation "transition_x3(41)"
+**** Evaluation error(s) in equation "transition_x3(42)"
+**** Evaluation error(s) in equation "transition_x3(43)"
+**** Evaluation error(s) in equation "transition_x3(44)"
+**** Evaluation error(s) in equation "transition_x3(45)"
+**** Evaluation error(s) in equation "transition_x3(46)"
+**** Evaluation error(s) in equation "transition_x3(47)"
+**** Evaluation error(s) in equation "transition_x3(48)"
+**** Evaluation error(s) in equation "transition_x3(49)"
+**** Evaluation error(s) in equation "transition_x3(50)"
+**** Evaluation error(s) in equation "transition_x3(51)"
+**** Evaluation error(s) in equation "transition_x3(52)"
+**** Evaluation error(s) in equation "transition_x3(53)"
+**** Evaluation error(s) in equation "transition_x3(54)"
+**** Evaluation error(s) in equation "transition_x3(55)"
+**** Evaluation error(s) in equation "transition_x3(56)"
+**** Evaluation error(s) in equation "transition_x3(57)"
+**** Evaluation error(s) in equation "transition_x3(58)"
+**** Evaluation error(s) in equation "transition_x3(59)"
+**** Evaluation error(s) in equation "transition_x3(60)"
+**** Evaluation error(s) in equation "transition_x3(61)"
+**** Evaluation error(s) in equation "transition_x3(62)"
+**** Evaluation error(s) in equation "transition_x3(63)"
+**** Evaluation error(s) in equation "transition_x3(64)"
+**** Evaluation error(s) in equation "transition_x3(65)"
+**** Evaluation error(s) in equation "transition_x3(66)"
+**** Evaluation error(s) in equation "transition_x3(67)"
+**** Evaluation error(s) in equation "transition_x3(68)"
+**** Evaluation error(s) in equation "transition_x3(69)"
+**** Evaluation error(s) in equation "transition_x3(70)"
+**** Evaluation error(s) in equation "transition_x3(71)"
+**** Evaluation error(s) in equation "transition_x3(72)"
+**** Evaluation error(s) in equation "transition_x3(73)"
+**** Evaluation error(s) in equation "transition_x3(74)"
+**** Evaluation error(s) in equation "transition_x3(75)"
+**** Evaluation error(s) in equation "transition_x3(76)"
+**** Evaluation error(s) in equation "transition_x3(77)"
+**** Evaluation error(s) in equation "transition_x3(78)"
+**** Evaluation error(s) in equation "transition_x3(79)"
+**** Evaluation error(s) in equation "transition_x3(80)"
+**** Evaluation error(s) in equation "transition_x3(81)"
+**** Evaluation error(s) in equation "transition_x3(82)"
+**** Evaluation error(s) in equation "transition_x3(83)"
+**** Evaluation error(s) in equation "transition_x3(84)"
+**** Evaluation error(s) in equation "transition_x3(85)"
+**** Evaluation error(s) in equation "transition_x3(86)"
+**** Evaluation error(s) in equation "transition_x3(87)"
+**** Evaluation error(s) in equation "transition_x3(88)"
+**** Evaluation error(s) in equation "transition_x3(89)"
+**** Evaluation error(s) in equation "transition_x3(90)"
+**** Evaluation error(s) in equation "transition_x3(91)"
+**** Evaluation error(s) in equation "transition_x3(92)"
+**** Evaluation error(s) in equation "transition_x3(93)"
+**** Evaluation error(s) in equation "transition_x3(94)"
+**** Evaluation error(s) in equation "transition_x3(95)"
+**** Evaluation error(s) in equation "transition_x3(96)"
+**** Evaluation error(s) in equation "transition_x3(97)"
+**** Evaluation error(s) in equation "transition_x3(98)"
+**** Evaluation error(s) in equation "transition_x3(99)"
+**** Evaluation error(s) in equation "transition_x3(100)"
+
+---- transition_x3  =E=  
+
+transition_x3(0)..  - (100)*x1(0) + (0)*x2(0) - (1)*x3(0) + x3(1) + (0)*u(0) =E= 0 ; (LHS = UNDF)
+     
+transition_x3(1)..  - (100)*x1(1) + (0)*x2(1) - (1)*x3(1) + x3(2) + (0)*u(1) =E= 0 ; (LHS = UNDF)
+     
+transition_x3(2)..  - (100)*x1(2) + (0)*x2(2) - (1)*x3(2) + x3(3) + (0)*u(2) =E= 0 ; (LHS = UNDF)
+     
+REMAINING 98 ENTRIES SKIPPED
+
+
+---- objective  =E=  
+
+objective..  - x1(100) + z =E= 0 ; (LHS = 0)
+     
+GAMS 42.5.0  cf11b917 Mar 30, 2023          DEX-DEG x86 64bit/macOS - 04/19/23 15:55:04 Page 3
+Optimization of final satellite Orbit
+Column Listing      SOLVE orbit_optimization Using NLP From line 63
+
+
+---- x1  dimensionless radius
+
+x1(0)
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       start_condition_x1
+       -1       transition_x1(0)
+    (-100)      transition_x2(0)
+    (-100)      transition_x3(0)
+
+x1(1)
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       transition_x1(0)
+       -1       transition_x1(1)
+    (-100)      transition_x2(1)
+    (-100)      transition_x3(1)
+
+x1(2)
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       transition_x1(1)
+       -1       transition_x1(2)
+    (-100)      transition_x2(2)
+    (-100)      transition_x3(2)
+
+REMAINING 98 ENTRIES SKIPPED
+
+---- x2  dimensionless radial velocity
+
+x2(0)
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       start_condition_x2
+       -0.1103  transition_x1(0)
+       -1       transition_x2(0)
+       (0)      transition_x3(0)
+
+x2(1)
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+       -0.1103  transition_x1(1)
+        1       transition_x2(0)
+       -1       transition_x2(1)
+       (0)      transition_x3(1)
+
+x2(2)
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+       -0.1103  transition_x1(2)
+        1       transition_x2(1)
+       -1       transition_x2(2)
+       (0)      transition_x3(2)
+
+REMAINING 98 ENTRIES SKIPPED
+
+---- x3  dimensionless tangental velocity
+
+x3(0)
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       start_condition_x3
+       (0)      transition_x2(0)
+      (-1)      transition_x3(0)
+
+x3(1)
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+       (0)      transition_x2(1)
+        1       transition_x3(0)
+      (-1)      transition_x3(1)
+
+x3(2)
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+       (0)      transition_x2(2)
+        1       transition_x3(1)
+      (-1)      transition_x3(2)
+
+REMAINING 98 ENTRIES SKIPPED
+
+---- u  angle of thrust
+
+u(0)
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+      (-0.0014) transition_x2(0)
+       (0)      transition_x3(0)
+
+u(1)
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+      (-0.0014) transition_x2(1)
+       (0)      transition_x3(1)
+
+u(2)
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+      (-0.0014) transition_x2(2)
+       (0)      transition_x3(2)
+
+REMAINING 98 ENTRIES SKIPPED
+
+---- z  objective
+
+z
+                (.LO, .L, .UP, .M = -INF, 0, +INF, 0)
+        1       objective
+
+GAMS 42.5.0  cf11b917 Mar 30, 2023          DEX-DEG x86 64bit/macOS - 04/19/23 15:55:04 Page 4
+Optimization of final satellite Orbit
+Model Statistics    SOLVE orbit_optimization Using NLP From line 63
+
+
+MODEL STATISTICS
+
+BLOCKS OF EQUATIONS           9     SINGLE EQUATIONS          309
+BLOCKS OF VARIABLES           5     SINGLE VARIABLES          405
+NON ZERO ELEMENTS         1,318     NON LINEAR N-Z              0
+CODE LENGTH               3,541     CONSTANT POOL             120
+
+
+GENERATION TIME      =        0.008 SECONDS      4 MB  42.5.0 cf11b917 DEX-DEG
+
+**** SOLVE from line 63 ABORTED, EXECERROR = 2
+
+
+EXECUTION TIME       =        0.011 SECONDS      4 MB  42.5.0 cf11b917 DEX-DEG
 
 
 USER: GAMS Demo license for Leander Pfeiffer         G230405|0002CO-GEN

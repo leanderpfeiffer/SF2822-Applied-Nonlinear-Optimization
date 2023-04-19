@@ -1,1 +1,18 @@
 B 3 C o m p i l a t i o n
+B 74 Equation Listing    SOLVE orbit_optimization Using NLP From line 63
+D 77 start_condition_x1
+D 82 start_condition_x2
+D 87 start_condition_x3
+D 92 end_condition_x2
+D 97 end_condition_x3
+D 102 transition_x1
+D 215 transition_x2
+D 328 transition_x3
+D 339 objective
+B 345 Column Listing      SOLVE orbit_optimization Using NLP From line 63
+E 348 x1
+E 373 x2
+E 398 x3
+E 420 u
+E 439 z
+B 447 Model Statistics    SOLVE orbit_optimization Using NLP From line 63
