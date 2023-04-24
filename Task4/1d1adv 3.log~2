@@ -1,0 +1,74 @@
+
+--- Job 1d1adv.gms Start 04/24/23 13:19:29 42.5.0 cf11b917 DEX-DEG x86 64bit/macOS
+--- Applying:
+    /Library/Frameworks/GAMS.framework/Versions/42/Resources/gmsprmun.txt
+--- GAMS Parameters defined
+    Input /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/Task4/1d1adv.gms
+    PageSize 0
+    ScrDir /Users/leanderpfeiffer/Desktop/SF2822/SF2822-Applied-Nonlinear-Optimization/Task4/225a/
+    SysDir /Library/Frameworks/GAMS.framework/Versions/42/Resources/
+    LogOption 3
+    ErrMsg 1
+    ErrorLog 99
+    IDE 1
+    LstTitleLeftAligned 1
+Licensee: GAMS Demo license for Leander Pfeiffer         G230405|0002CO-GEN
+          KTH, Sweden                                              DL089359
+          /Users/leanderpfeiffer/Library/Application Support/GAMS/gamslice.txt
+          leanderp@kth.se, Leander Pfeiffer                                
+          Demo license for demonstration and instructional purposes only
+Processor information: 1 socket(s), 2 core(s), and 4 thread(s) available
+GAMS 42.5.0   Copyright (C) 1987-2023 GAMS Development. All rights reserved
+--- Starting compilation
+--- 1d1adv.gms(90) 3 Mb
+--- Starting execution: elapsed 0:00:00.005
+--- 1d1adv.gms(45) 4 Mb
+--- Generating NLP model project1
+--- 1d1adv.gms(88) 6 Mb
+---   411 rows  511 columns  1,374 non-zeroes
+---   2,294 nl-code  460 nl-non-zeroes
+--- Range statistics (absolute non-zero finite values)
+--- RHS       [min, max] : [ 1.000E+00, 9.060E+02] - Zero values observed as well
+--- Bound     [min, max] : [ 1.434E-06, 9.060E+02]
+--- Matrix    [min, max] : [ 1.793E-05, 3.336E+05] - Zero values observed as well
+--- 1d1adv.gms(88) 4 Mb
+--- Executing CONOPT (Solvelink=2): elapsed 0:00:00.017
+
+CONOPT 3         42.5.0 cf11b917 Mar 30, 2023          DEG x86 64bit/macOS    
+
+--- *** This solver runs with a demo license. No commercial use.
+ 
+ 
+    C O N O P T 3   version 3.17N
+    Copyright (C)   ARKI Consulting and Development A/S
+                    Bagsvaerdvej 246 A
+                    DK-2880 Bagsvaerd, Denmark
+ 
+ 
+   Iter Phase Ninf   Infeasibility   RGmax    NSB   Step InItr MX OK
+      0   0        2.7957360514E+01 (Input point)
+ 
+                   Pre-triangular equations:   8
+                   Post-triangular equations:  54
+                   Definitional equations:     294
+ 
+      1   0        2.3946829267E+01 (After pre-processing)
+      2   0        6.6389611429E-02 (After scaling)
+     10   0     9  6.6389611429E-02               0.0E+00      F  F
+     20   0    19  6.6389611429E-02               0.0E+00      F  F
+     30   0    29  6.6389611429E-02               0.0E+00      F  F
+     40   0    39  6.6389611429E-02               0.0E+00      F  F
+     50   0    46  6.5787271040E-02               1.0E+00      F  T
+     56   1    19  5.4690102988E-02 1.3E+01    63 1.0E+00   14 T  T
+     61   1     1  4.6732758621E-02 1.0E-04    44 1.0E+00    2 T  T
+ 
+   Iter Phase Ninf   Infeasibility   RGmax    NSB   Step InItr MX OK
+     62   1     1  4.6732758621E-02 0.0E+00    44
+ 
+ ** Infeasible solution. Reduced gradient less than tolerance.
+ 
+--- Reading solution for model project1
+--- Executing after solve: elapsed 0:00:00.132
+--- 1d1adv.gms(90) 4 Mb
+*** Status: Normal completion
+--- Job 1d1adv.gms Stop 04/24/23 13:19:29 elapsed 0:00:00.134
