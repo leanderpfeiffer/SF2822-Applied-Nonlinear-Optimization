@@ -26,41 +26,41 @@ E 335 x2
 E 360 x3
 E 385 u
 E 404 dm
-E 432 Thrust
+E 426 Thrust
 E 448 mf
-B 471 Range Statistics    SOLVE project1 Using NLP From line 89
-B 482 Model Statistics    SOLVE project1 Using NLP From line 89
-B 496 Solution Report     SOLVE project1 Using NLP From line 89
-F 552 objfun
-F 556 massfuel
-F 611 consfuel
-F 667 thrusteq
-F 723 cons1
-F 779 cons2
-F 835 cons3
-F 891 cons4
-F 946 cons5
-F 1001 cons6
-F 1058 cons7
-F 1059 cons8
-F 1060 initial1
-F 1061 initial2
-F 1062 initial3
-F 1063 initial4
-G 1074 z
-G 1078 dx1
-G 1134 dx2
-G 1190 dx3
-G 1246 x1
-G 1302 x2
-G 1358 x3
-G 1414 u
-G 1470 dm
-G 1526 Thrust
-G 1582 mf
-B 1645 E x e c u t i o n
-I 1645 u
-I 1652 z
-I 1653 mf
-I 1658 Thrust
-I 1664 mfuel
+B 477 Range Statistics    SOLVE project1 Using NLP From line 89
+B 488 Model Statistics    SOLVE project1 Using NLP From line 89
+B 502 Solution Report     SOLVE project1 Using NLP From line 89
+F 558 objfun
+F 562 massfuel
+F 617 consfuel
+F 673 thrusteq
+F 729 cons1
+F 785 cons2
+F 841 cons3
+F 897 cons4
+F 952 cons5
+F 1007 cons6
+F 1064 cons7
+F 1065 cons8
+F 1066 initial1
+F 1067 initial2
+F 1068 initial3
+F 1069 initial4
+G 1080 z
+G 1084 dx1
+G 1140 dx2
+G 1196 dx3
+G 1252 x1
+G 1308 x2
+G 1364 x3
+G 1420 u
+G 1476 dm
+G 1532 Thrust
+G 1588 mf
+B 1651 E x e c u t i o n
+I 1651 u
+I 1658 z
+I 1659 mf
+I 1664 Thrust
+I 1670 mfuel

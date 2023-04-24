@@ -71,8 +71,8 @@ thrusteq(t) .. Thrust(t) * p =e= dm(t);
 
 objfun  .. z =e= x1("50");
 cons1(t) .. dx1(t) =e= c3**2*x2(t)*h;
-cons2(t) .. dx2(t) =e= ((x3(t)**2)/x1(t) - (1/x1(t)**2) + (dm(t)/p*c1)*sin(u(t))/(1 - (dm(t)/p*c1)*p*c2*c3*(ord(t)-1)*h))*h;
-cons3(t) .. dx3(t) =e= (-c3**2*x2(t)*x3(t)/x1(t) + (dm(t)/p*c1)*c3*cos(u(t))/(1 - (dm(t)/p*c1)*p*c2*c3*(ord(t)-1)*h))*h;
+cons2(t) .. dx2(t) =e= ((x3(t)**2)/x1(t) - (1/x1(t)**2) + r0**2/mu * Thrust(t)/(m0-mfuel+mf(t))*sin(u(t)))*h;
+cons3(t) .. dx3(t) =e= (-mu*tf**2/r0**3 * x2(t)*x3(t)/x1(t)+ tf*sqrt(r0)/sqrt(mu)*Thrust(t)/(m0-mfuel+mf(t))*cos(u(t)))*h;
 cons4(t+1)  ..  x1(t+1) =e= dx1(t) + x1(t);
 cons5(t+1)  ..  x2(t+1) =e= dx2(t) + x2(t);
 cons6(t+1)   .. x3(t+1) =e= dx3(t) + x3(t);
